@@ -29,6 +29,7 @@ This repository contains data structure assignments implemented in C++.
 
 ### 👨‍💻 Student Information
 
+| Field | Details |
 |:---:|:---:|
 | **Name** | Arnav Singla |
 | **Roll No** | 1024031010 |
@@ -42,6 +43,5 @@ This repository contains data structure assignments implemented in C++.
 
 ![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=arnav.cpp-assignments)
 
-**Made with ❤️ by Arnav Singla**
 
 </div>
