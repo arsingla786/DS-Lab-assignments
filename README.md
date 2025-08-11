@@ -12,7 +12,7 @@
 <div align="center">
 
 ## 🌟 Welcome! 🌟
-
+<div align="center">
 ```
 ╔══════════════════════════════════════════╗
 ║        Data Structures Assignments       ║
