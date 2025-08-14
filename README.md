@@ -20,7 +20,7 @@ This repository contains data structure assignments implemented in C++.
 
 ###  Student Information
 
-| Field | Details |
+
 |:---:|:---:|
 | **Name** | Arnav Singla |
 | **Roll No** | 1024031010 |
