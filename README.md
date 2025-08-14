@@ -1,4 +1,4 @@
-# 🚀 Data Structures Assignments
+#  Data Structures Assignments
 
 <div align="center">
 
@@ -18,7 +18,7 @@ This repository contains data structure assignments implemented in C++.
 
 <div align="center">
 
-### 👨‍💻 Student Information
+###  Student Information
 
 | Field | Details |
 |:---:|:---:|
