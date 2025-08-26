@@ -214,6 +214,7 @@ void transpose(int mat2[][3], int trans[][3])
     }
 }
 
+<<<<<<< HEAD
 void multiSparse(int mat1[][3], int trans[][3], int result[][3])
 {
     int k = 1;
@@ -292,3 +293,5 @@ int main()
 
     return 0;
 }
+=======
+>>>>>>> f440395c6ff61f7e489f8fcea9380bced8408be5
