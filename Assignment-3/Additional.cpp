@@ -25,6 +25,36 @@ int main(){
     }
 }
 
+//using stacks
+#include<iostream>
+#include<stack>
+using namespace std;
+
+int main() {
+    int arr[5] = {2, 3, 1, 6, 5};
+    stack<int> s;
+    int ans[5] = {0};
+
+    for(int i = 0; i < 5; i++) {
+        while(!s.empty() && s.top() >= arr[i]) {
+            s.pop();
+        }
+
+        if(s.empty()) {
+            ans[i] = -1;
+        } else {
+            ans[i] = s.top();
+        }
+        s.push(arr[i]);
+    }
+
+    for(int i = 0; i < 5; i++) {
+        cout << ans[i] << " ";
+    }
+
+    return 0;
+}
+
 /*q3   */
 #include <iostream>
 #include <stack>
@@ -33,26 +63,20 @@ using namespace std;
 void printNGE(int arr[], int n) {
     int nge[n];
     stack<int> st;
-
-    // Traverse from right to left
     for (int i = n - 1; i >= 0; i--) {
         // Pop smaller or equal elements
         while (!st.empty() && st.top() <= arr[i]) {
             st.pop();
         }
 
-        // If stack is empty, no greater element
         if (st.empty()) {
             nge[i] = -1;
         } else {
             nge[i] = st.top();
         }
-
-        // Push current element
         st.push(arr[i]);
     }
- 
-    // Print result
+
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " --> " << nge[i] << endl;
     }
@@ -60,13 +84,12 @@ void printNGE(int arr[], int n) {
 
 int main() {
     int arr[] = {4, 5, 2, 25, 7, 8};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
+    int n = 6;
     printNGE(arr, n);
 
-    return 0;
 }
 
+<<<<<<< HEAD
 
 
 /*q4 */
@@ -149,3 +172,24 @@ int main() {
     return 0;
 }
    
+=======
+//q2get min
+
+#include<iostream>
+#include<stack>
+using namespace std;
+int main(){
+    int arr[5] = {2,-1,3,4,2};
+    stack<int> s;
+    s.push(INT_MAX);
+    for(int i=0;i<5;i++){
+        if(arr[i]<s.top()){
+            s.push(arr[i]);
+        }
+    }
+    cout<<"min element = "<<s.top();
+}   
+
+
+>>>>>>> 00c552a4ec738faf00f3b86a1ffb7f1533c77f19
+ 
