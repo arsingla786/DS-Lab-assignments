@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  #include <iostream>
 using namespace std;
 
@@ -116,10 +117,38 @@ int main() {
                 break;
             case 7:
                 cout << "Exiting..." << endl;
-                return 0;
+                return 0;  
             default:
                 cout << "Invalid choice! Try again." << endl;
         }
     }
 }
   
+=======
+
+//first non repeating elements
+
+#include<iostream>
+#include<string>
+#include<queue>
+using namespace std;
+
+int main(){
+    string str = "aabbcdde";
+    int arr[26] = {0};
+    queue<char> q;
+    for(int i=0;i<str.length();i++){
+        arr[str[i]-'a']++;
+        q.push(str[i]);
+    }
+    
+    for(int i = 0;i<str.length();i++){
+        if(arr[str[i]-'a']==1){
+            cout<<"first non repeating = "<< str[i];
+            break;
+        }
+    }
+    
+}
+ 
+>>>>>>> 7196d7f599db34bd8ee3ae9f2600732ed843c57a

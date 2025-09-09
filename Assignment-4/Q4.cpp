@@ -36,6 +36,6 @@ int main() {
 
     cout << "Output: ";
     firstNonRepeating(input);
- 
+  
     return 0;
 }
