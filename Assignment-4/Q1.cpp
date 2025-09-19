@@ -120,3 +120,82 @@ int main() {
     return 0;
 }
  
+
+//queue 
+
+
+#include <iostream>
+using namespace std;
+#define MAX 5
+int front = -1;
+int rear  = -1;
+int queue[MAX];
+
+void enqueue(int data){
+    if(rear == MAX-1){
+        cout<<"queue overflow!"<<endl;
+    }
+    else{
+    if(front==-1){
+        front=0; //first element
+    }
+    rear ++;
+    queue[rear] = data;
+}
+}
+void dequeue(){
+    if(front == -1 || front >rear){
+        cout<<"underflow!"<<endl;
+    }
+    else{
+    front++;
+    if(front>rear){//reset queue
+        front=rear=-1;
+    }
+    }
+}
+ 
+void display(){
+    if(front==-1){
+        cout<<"empty queue!"<<endl;
+        return;
+    }
+    for(int i=front;i<=rear;i++){
+        cout<<queue[i]<<" ";
+    }
+    cout<<endl;
+}
+void isFull(){
+    if(rear==MAX-1){
+        cout<<"queue full"<<endl;
+    }
+    else{
+        cout<<"not full"<<endl;
+    }
+}
+void isEmpty(){
+    if(front==rear){
+        cout<<"yes empty"<<endl;
+    }
+    else{
+        cout<<"not empty"<<endl;
+    }
+}
+int main()
+{
+    enqueue(4);
+    enqueue(5);
+    enqueue(6);
+    enqueue(7);
+    enqueue(8);
+    enqueue(9);
+    display();
+    isFull();
+    isEmpty();
+    dequeue();
+    dequeue();
+    dequeue();
+    dequeue(); 
+ 
+    display();
+}
