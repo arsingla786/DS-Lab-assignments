@@ -199,3 +199,71 @@ int main()
  
     display();
 }
+
+
+//circular queue 
+#include <iostream>
+using namespace std;
+#define MAX 5
+int front = -1;
+int rear  = -1;
+int queue[MAX];
+
+void enqueue(int data){
+    if ((rear + 1) % MAX == front) {
+        cout << "Overflow" << endl;
+        return;
+    }
+    if (front == -1) { // inserting the first element
+        front = rear = 0;
+    } else {
+        rear = (rear + 1) % MAX;
+    }
+    queue[rear] = data;  // <-- always store the element
+}
+
+void dequeue(){
+    if (front == -1) {
+        cout << "Underflow" << endl;
+        return;
+    }
+    cout << "Dequeued: " << queue[front] << endl;
+    if (front == rear) {
+        // queue becomes empty
+        front = rear = -1;
+    } else {
+        front = (front + 1) % MAX;
+    }
+}
+
+void display() {
+    if (front == -1) {
+        cout << "Queue is empty!" << endl;
+        return;
+    }
+    cout << "Queue elements: ";
+    int i = front;
+    while (true) {
+        cout << queue[i] << " ";
+        if (i == rear) break;        // stop when we reach rear
+        i = (i + 1) % MAX;           // move circularly
+    }
+    cout << endl;
+}
+
+int main() {
+    enqueue(40);
+    display();
+
+    enqueue(30);
+    enqueue(20);
+    display();
+
+    dequeue();
+    display();
+
+    enqueue(50);
+    enqueue(60);
+    enqueue(70); // overflow if full
+    display();
+}
