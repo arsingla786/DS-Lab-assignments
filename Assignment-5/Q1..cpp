@@ -7,7 +7,7 @@ struct Node {
 };
 
 struct Node* head = NULL;
-
+ 
 // Function to create a new node
 struct Node* createNode(int value) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
