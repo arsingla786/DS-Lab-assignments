@@ -15,7 +15,7 @@ struct Node* createNode(int value) {
     newNode->next = NULL;
     return newNode;
 }
-
+  
 // (a) Insertion at the beginning
 void insertAtBeginning(int value) {
     struct Node* newNode = createNode(value);
