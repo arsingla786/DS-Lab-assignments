@@ -1,75 +1,55 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream> 
+#include<vector>
+using namespace std;
 
-struct Node {
+class node{
+    public:
     int data;
-    struct Node* next;
+    node* next;
+    node(int data1){
+      data=data1;
+      next = nullptr;
+    }
 };
 
-// Create a new node
-struct Node* createNode(int value) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = value;
-    newNode->next = NULL;
-    return newNode;
+node* arrtoLL(vector<int> &arr){
+  node* head = new node(arr[0]);
+  node* temp= head;
+  for(int i=1;i<arr.size();i++){
+    temp->next = new node(arr[i]);
+    temp=temp->next;
+  }
+  return head;
 }
 
-// Insert at end
-void insertAtEnd(struct Node** head, int value) {
-    struct Node* newNode = createNode(value);
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
-    struct Node* temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
+void print(node* head){
+  node* temp = head;
+  while(temp!= NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  }
 }
 
-// Find middle of linked list
-void findMiddle(struct Node* head) {
-    if (head == NULL) {
-        printf("List is empty.\n");
-        return;
-    }
-
-    struct Node* slow = head;
-    struct Node* fast = head;
-
-    while (fast != NULL && fast->next != NULL) {
-        slow = slow->next;         // move 1 step
-        fast = fast->next->next;   // move 2 steps
-    }
-
-    printf("Middle element: %d\n", slow->data);
+void middle(node* head){
+  node* slow= head;
+  node* fast = head;
+  
+  while(fast!=NULL && fast->next!=NULL){
+    slow=slow->next;
+    fast=fast->next->next;
+  }
+  cout<<"middle node :"<< slow->data;
 }
 
-// Display linked list
-void displayList(struct Node* head) {
-    while (head != NULL) {
-        printf("%d", head->data);
-        if (head->next != NULL) printf("->");
-        head = head->next;
-    }
-    printf("\n");
+int main() 
+{     
+    vector<int> arr = {1,2,3,9,4};
+    node* head = arrtoLL(arr);
+    print(head);
+    cout<<endl;
+    middle(head);
+    
 }
 
-int main() {
-    struct Node* head = NULL;
-    int arr[] = {1,2,3,4,5};
-    int n = sizeof(arr)/sizeof(arr[0]);
 
-    for (int i = 0; i < n; i++) {
-        insertAtEnd(&head, arr[i]);
-    }
-
-    printf("Linked List: ");
-    displayList(head);
-
-    findMiddle(head);
-
-    return 0;
-}
  

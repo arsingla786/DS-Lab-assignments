@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  #include <iostream>
 using namespace std;
 
@@ -124,7 +123,6 @@ int main() {
     }
 }
   
-=======
 
 //first non repeating elements
 
@@ -151,4 +149,3 @@ int main(){
     
 }
  
->>>>>>> 7196d7f599db34bd8ee3ae9f2600732ed843c57a

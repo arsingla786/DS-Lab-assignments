@@ -1,94 +1,75 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream> 
+#include<vector>
+using namespace std;
 
-struct Node {
+class node{
+    public:
     int data;
-    struct Node* next;
+    node* next;
+    node(int data1){
+      data=data1;
+      next = nullptr;
+    }
 };
 
-// Function to create a new node
-struct Node* createNode(int value) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = value;
-    newNode->next = NULL;
-    return newNode;
+node* arrtoLL(vector<int> &arr){
+  node* head = new node(arr[0]);
+  node* temp= head;
+  for(int i=1;i<arr.size();i++){
+    temp->next = new node(arr[i]);
+    temp=temp->next;
+  }
+  return head;
+}
+void print(node* head){
+  node* temp = head;
+  while(temp!= NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  }
 }
 
-// Insert node at the end
-void insertAtEnd(struct Node** head, int value) {
-    struct Node* newNode = createNode(value);
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
-    struct Node* temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
-}
+node* deleteVal(node* head, int val){
+  if(head->data==val){
+    node* temp = head;
+    head = head->next;
+    delete temp;
+    return head;
+  }
+  
+    node* prev = head;
+    node* curr = head->next;
 
-// Count occurrences and delete all
-int deleteOccurrences(struct Node** head, int key) {
-    int count = 0;
-
-    // Remove occurrences from the beginning
-    while (*head != NULL && (*head)->data == key) {
-        struct Node* temp = *head;
-        *head = (*head)->next;
-        free(temp);
-        count++;
-    }
-
-    // Remove occurrences from the rest of the list
-    struct Node* current = *head;
-    while (current != NULL && current->next != NULL) {
-        if (current->next->data == key) {
-            struct Node* temp = current->next;
-            current->next = current->next->next;
-            free(temp);
-            count++;
-        } else {
-            current = current->next;
+    while (curr != NULL) {
+        if (curr->data == val) {
+            prev->next = curr->next;
+            delete curr;
+            break;
         }
+        prev = curr;
+        curr = curr->next;
     }
-
-    return count;
-}
- 
-// Display the linked list
-void displayList(struct Node* head) {
-    if (head == NULL) {
-        printf("Empty List\n");
-        return;
-    }
-    while (head != NULL) {
-        printf("%d", head->data);
-        if (head->next != NULL) printf("->");
-        head = head->next;
-    }
-    printf("\n");
+    return head;
 }
 
-int main() {
-    struct Node* head = NULL;
-    int arr[] = {1,2,1,2,1,3,1};
-    int n = sizeof(arr)/sizeof(arr[0]);
-
-    // Create the linked list
-    for (int i = 0; i < n; i++) {
-        insertAtEnd(&head, arr[i]);
+node* deleteK(node* head, int key){
+  node* temp = head;
+  while(temp!=NULL){
+    if(temp->data==key){
+      head = deleteVal(head,key);
+      temp=head;
     }
+    temp=temp->next;
+  }
+  return head;
+}
 
-    int key = 1;
-    printf("Original Linked List: ");
-    displayList(head);
-
-    int count = deleteOccurrences(&head, key);
-
-    printf("Count: %d\n", count);
-    printf("Updated Linked List: ");
-    displayList(head);
-
-    return 0;
+int main() 
+{     
+    vector<int> arr = {1,2,3,9,4,1,5,1,8};
+    node* head = arrtoLL(arr);
+    print(head);
+    cout<<endl;
+    node* newHead = deleteK(head,1); 
+    print(newHead);
 }
