@@ -7,7 +7,7 @@ struct Node {
 };
 
 struct Node* head = NULL;
-
+ 
 // Function to create a new node
 struct Node* createNode(int value) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
@@ -15,7 +15,7 @@ struct Node* createNode(int value) {
     newNode->next = NULL;
     return newNode;
 }
-
+  
 // (a) Insertion at the beginning
 void insertAtBeginning(int value) {
     struct Node* newNode = createNode(value);
