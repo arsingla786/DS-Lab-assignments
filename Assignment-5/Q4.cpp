@@ -1,61 +1,62 @@
-// Write a program to reverse a linked list. 
-// Input: 1->2->3->4->NULL 
-// Output: 4->3->2->1->NULL 
-#include <stdio.h>
-#include <stdlib.h>
-struct Node {
+#include <iostream> 
+#include<vector>
+using namespace std;
+
+class node{
+    public:
     int data;
-    struct Node* next;
+    node* next;
+    node(int data1){
+      data=data1;
+      next = nullptr;
+    }
 };
-// Function to create a new node
-struct Node* createNode(int value) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = value;
-    newNode->next = NULL;
-    return newNode;
+
+node* arrtoLL(vector<int> &arr){
+  node* head = new node(arr[0]);
+  node* temp= head;
+  for(int i=1;i<arr.size();i++){
+    temp->next = new node(arr[i]);
+    temp=temp->next;
+  }
+  return head;
 }
-// Reverse the linked list
-struct Node* reverseList(struct Node* head) {
-    struct Node* prev = NULL;
-    struct Node* current = head;
-    struct Node* next = NULL;
-    while (current != NULL) {
-        next = current->next; // Store next node
-        current->next = prev; // Reverse current node's pointer
-        prev = current;       // Move pointers one position ahead
-        current = next;
-    }
-    return prev; // New head of the reversed list
+
+void print(node* head){
+  cout<<"given list : ";
+  node* temp = head;
+  while(temp!= NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  }
 }
-void displayList(struct Node* head) {
-    while (head != NULL) {
-        printf("%d", head->data);
-        if (head->next != NULL) printf("->");
-        head = head->next;
-    }
-    printf("\n");
+
+node* reverse(node* head){
+  cout<<"reversed list : ";
+  if(!head){
+    return head;
 }
-int main() {
-    struct Node* head = NULL;
-    int arr[] = {1, 2, 3, 4};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < n; i++) {
-        struct Node* newNode = createNode(arr[i]);
-        if (head == NULL) {
-            head = newNode;
-        } else {
-            struct Node* temp = head;
-            while (temp->next != NULL) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-        }
-    }
-    printf("Original List: ");
-    displayList(head);
-    head = reverseList(head);
-    printf("Reversed List: ");
-    displayList(head);
-    return 0;
+
+  node* temp = head;
+  node* front =NULL;
+  node* back= NULL;
+  
+  while(temp!=NULL){
+    front = temp->next;
+    temp->next=back;
+    back = temp;
+    temp= front;
+  }
+  return back;
 }
- 
+
+int main() 
+{     
+    vector<int> arr = {1,2,3,9,4};
+    node* head = arrtoLL(arr);
+    print(head);
+    cout<<endl;
+    
+    head = reverse(head);
+    print(head);
+} 
