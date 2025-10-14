@@ -128,10 +128,15 @@ node* correctedDLL(node* head){
   //detecting the incorect node
   node* temp = head;
   while(temp!=NULL && temp->next!=NULL){
-    if(temp->next->back !=temp){
-      cout<<"error detected "<<endl;
-      temp->next->back  = temp;
-    }
+    // Fix forward direction
+        if (temp->next != NULL && temp->next->back != temp) {
+            temp->next->back = temp;
+        }
+
+        // Fix backward direction
+        if (temp->back != NULL && temp->back->next != temp) {
+            temp->back->next = temp;
+        }
     temp =temp->next;
   }
   return head;
