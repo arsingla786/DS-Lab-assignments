@@ -190,8 +190,6 @@ node* insertTail(node* head, int val){
   newNode->next=NULL;
   return head;
 }
-
-
 //insert at position k 
 //k should not be equal to head or tail
 node* insertK(node* head,int val , int k){
