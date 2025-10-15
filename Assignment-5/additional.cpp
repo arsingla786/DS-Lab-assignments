@@ -194,16 +194,7 @@ class Solution {
 
 //Q4____________________________________________________________________
 //rotate left by k nodes
-// Approach: To rotate a linked list to the left by k nodes, we can follow these
-// steps:
-// 1.   
-//firstly find size of linked list 
-// 2. If k is greater than the size of the list, we take k modulo size to handle cases where k exceeds the list length.
-// 3. If k is 0 after the modulo operation, we return the original head as no rotation
-// is needed.
-// 4. We then traverse the list to find the kth node and the last node.
-// 5. We update the next pointers to perform the rotation by making the (k+1)th node
-// the new head and connecting the last node to the original head.
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -243,8 +234,7 @@ public:
         return newHead; // Return the new head of the rotated list
     }
 };
-// Time Complexity: O(N), where N is the number of nodes in the linked list.
-// Space Complexity: O(1), as we are using only a constant amount of extra space 
+
 //Q4___________________________________________________________________
 #include <iostream>
 #include<vector> 
