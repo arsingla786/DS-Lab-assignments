@@ -88,10 +88,6 @@ int main() {
     printNGE(arr, n);
 
 }
-
-<<<<<<< HEAD
-
-
 /*q4 */
 #include <bits/stdc++.h>
 using namespace std;
