@@ -1,0 +1,110 @@
+//delete even parity nodes
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct Node {
+    int data;
+    Node *prev, *next;
+};
+
+void push(Node** head_ref, int new_data)
+{
+    Node* new_node
+        = (Node*)malloc(sizeof(struct Node));
+
+    new_node->data = new_data;
+
+    new_node->prev = NULL;
+
+    new_node->next = (*head_ref);
+
+        (*head_ref)->prev = new_node;
+
+    (*head_ref) = new_node;
+}
+
+bool isEvenParity(int x)
+{
+    int parity = 0;
+    while (x != 0) {
+        if (x & 1)
+            parity++;
+        x = x >> 1;
+    }
+
+    if (parity % 2 == 0)
+        return true;
+    else
+        return false;
+}
+void deleteNode(Node** head_ref, Node* del)
+{
+    // Base case
+    if (*head_ref == NULL || del == NULL)
+        return;
+
+    // If the node to be
+    // deleted is head node
+    if (*head_ref == del)
+        *head_ref = del->next;
+
+    // Change next only if node to be
+    // deleted is not the last node
+    if (del->next != NULL)
+        del->next->prev = del->prev;
+
+    // Change prev only if node to be
+    // deleted is not the first node
+    if (del->prev != NULL)
+        del->prev->next = del->next;
+
+    // Finally, free the memory
+    // occupied by del
+    free(del);
+
+    return;
+}
+
+void deleteEvenParityNodes(
+    Node** head_ref)
+{
+    Node* ptr = *head_ref;
+    Node* next;
+
+    while (ptr != NULL) {
+        next = ptr->next;
+
+        if (isEvenParity(ptr->data))
+            deleteNode(head_ref, ptr);
+
+        ptr = next;
+    }
+}
+
+void printList(Node* head)
+{
+    if (head == NULL) {
+        cout << "Empty list\n";
+        return;
+    }
+
+    while (head != NULL) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+
+int main()
+{
+    Node* head = NULL;
+
+    push(&head, 14);
+    push(&head, 9);
+    push(&head, 8);
+    push(&head, 15);
+    push(&head, 18);
+    deleteEvenParityNodes(&head);
+
+    printList(head);
+}
