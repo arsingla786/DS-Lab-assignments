@@ -73,10 +73,45 @@ int maxNode(node* root){
   return root->val;
 }
 //(d)//inorder successor -> smallest element in right subtree
-int successor(node* root, int val){
-    
+int successor(node* root, node* x){
+    //it is min node in right subtree
+    if(x->right !=NULL){
+      return minNode(x->right);
+    }
+    node* successor = NULL;
+    node* ancestor = root;
+    while(ancestor!=x){
+      if(x->val < ancestor->val){
+        successor= ancestor;
+        ancestor = ancestor->left;
+      }
+      else{
+        ancestor = ancestor->right;
+      }
+    }
+    return successor->val;
 }
 
+//(e) predecessor -> max value in left subtree;
+int predecessor(node* root, node* x){
+  if(x->left!=NULL){
+      return maxNode(x->left);
+  }
+    node* predecessor =NULL;
+    node* ancestor = root;
+    while(ancestor!=x){
+      if(x->val>ancestor->val){
+        predecessor = ancestor;
+        ancestor = ancestor->right; 
+      }
+      else{
+        ancestor = ancestor->left;
+      }
+    }
+    return predecessor->val;
+}
+
+ 
 int main() 
 {
   node* root = new node(15);
