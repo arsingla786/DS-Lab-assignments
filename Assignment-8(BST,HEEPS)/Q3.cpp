@@ -3,7 +3,7 @@ operations:
 (a) Insert an element (no duplicates are allowed),
 (b) Delete an existing element,
 (c) Maximum depth of BST
-(d) Minimum depth of 
+(d) Minimum depth of BST
 */
 
 #include <iostream>
@@ -63,7 +63,18 @@ int maxDepth(node* root){
     return max(lh,rh)+1;
 
 }
+//(d) min depth 
+int minDepth(node* root){
+    if(root==NULL) return;
+    // If one child is NULL, return depth of the other subtree
+    if (root->left == NULL)
+        return minDepth(root->right) + 1;
+    if (root->right == NULL)
+        return minDepth(root->left) + 1;
 
+    // If both children exist
+    return min(minDepth(root->left), minDepth(root->right)) + 1;
+}
 int main() 
 {
   node* root = new node(15);
