@@ -3,8 +3,6 @@
 using namespace std;
 
 void BFS(int start,vector<vector<int>>& adjList,vector<int>& visitedArr){
-  vector<int> bfs;
-  
   visitedArr[start]=1;
   queue<int> q ;
   q.push(start);

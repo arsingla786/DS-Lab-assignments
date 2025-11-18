@@ -27,7 +27,12 @@ int main()
   }
   vector<int> visited(nodes+1,0);
   vector<int> dfs;
-  DFS(int16_t,visited,dfs,adjList);
+ 
+    int startNode;
+    cout << "Enter starting node: ";
+    cin >> startNode;
+
+    DFS(startNode, visited, dfs, adjList);
   for(auto i:dfs){
     cout<<i<<" ";
   }
