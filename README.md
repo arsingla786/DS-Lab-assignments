@@ -1,6 +1,6 @@
 #  Data Structures Assignments
 
-<div align="center">
+<div align="center"> 
 
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![Data Structures](https://img.shields.io/badge/Data%20Structures-FF6B6B?style=for-the-badge) 
