@@ -27,7 +27,7 @@ This repository contains data structure assignments implemented in C++.
 | **Group** | 2C72 |
 
 </div>
-
+ 
 ---
  
 <div align="center">
